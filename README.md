@@ -1,4 +1,4 @@
-## kv - key-value Iteration in R
+## kv - key-value iteration in R
 
 Other languages (e.g. **Python**) have a shorthand way to reference an objects names
 or values while iterating. This is not something built into **R**. The **kv** 
