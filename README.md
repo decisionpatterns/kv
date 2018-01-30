@@ -1,4 +1,4 @@
-# kv - Key Value Iteration in R
+## kv - key-value Iteration in R
 
 Other languages (e.g. **Python**) have a shorthand way to reference an objects names
 or values while iterating. This is not something built into **R**. The **kv** 
@@ -16,6 +16,7 @@ for( . in kv(mylist) ) {                   # Wrap `mylist` by kv()
 
 `kv` works by transforming its argument into a list-of-lists, each element 
 having the appropriate `k` and `v`. See `?kv` for details.
+
 
 **NB:** the use of `.` is a convention, any valid R name will work in its place.
 
@@ -42,5 +43,5 @@ use the concise syntak `.$k` and `.$v`.
 
 ## References
 
-* [(SO:for-loop-in-r-with-key-value](http://stackoverflow.com/questions/18572921/for-loop-in-r-with-key-value)
+* [SO:for-loop-in-r-with-key-value](http://stackoverflow.com/questions/18572921/for-loop-in-r-with-key-value)
 * [SO:iterate-over-key-value-pair-from-a-list](http://stackoverflow.com/questions/4500106/iterate-over-key-value-pair-from-a-list)
