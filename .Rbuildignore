@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^\.RData$
 ^TODO\.md$
+^\.travis\.yml$
+^codecov\.yml$

@@ -1,5 +1,12 @@
 ## kv - key-value iteration in R
 
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kv)](https://cran.r-project.org/package=kv)
+[![Downloads](https://cranlogs.r-pkg.org/badges/kv?color=brightgreen)](https://www.r-pkg.org/pkg/kv)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/kv)](http://cran.rstudio.com/web/packages/kv/index.html)
+[![software impact](http://depsy.org/api/package/r/kv/badge.svg)](http://depsy.org/package/r/kv)
+[![Coverage Status](https://img.shields.io/codecov/c/github/decisionpatterns/kv/master.svg)](https://codecov.io/github/decisionpatterns/kv?branch=master)
+
+
 Other languages (e.g. **Python**) have a shorthand way to reference an objects names
 or values while iterating. This is not something built into **R**. The **kv** 
 packages steps in to provided a simple/no magic mechanism 
