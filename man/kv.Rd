@@ -25,10 +25,12 @@ Creates a list with \code{k} and \code{v} elements useful for iteration in loops
 No magic here.
 
 \code{kv} converts its argument(\code{x}) into a list-of-lists of key-value pairs
-For each element of \code{x}, a list with elements \code{k}
-and \code{v} are created.
-\code{k} is the name/key and is given the name of the element of \code{x}.
-\code{v} is that element.
+For \strong{each element of \code{x}}, it returns a list with elements \code{k}
+and \code{v}:
+\code{k} is the key(name) for the element. Missing names are made \code{NULL}
+\code{v} is that value of that element.
+
+\code{kv} works for vector and list-like objects including tables.
 
 For many cases, key-value iteration can be done with \code{*apply} or
 \code{paste} functions. This is made to be explicit and work on a variery of
@@ -40,23 +42,12 @@ objects.
 
   mylist = list( a=1, b=2, c=3)
 
-  for( . in kv(mylist)) {
-    cat( "The key is: ", .$k, "\\n" )
-    cat( "The value is: ", .$v, "\\n" )
-  }
+  for( . in kv(mylist))
+    cat( "key is: ", .$k, "| value is:", .$v, "\\n" )
 
  # Lists
  li <- list(a=1,b=2,c=3)
  kv(li)
-
- for( . in kv(li) )
-   cat( .$k, ":", .$v, "\\n")
-
- for( . in kv( list() ))
-   cat( .$k, ":", .$v, "\\n")
-
- for( . in kv(li) )
-   cat( .$k, ":", .$v, "\\n")
 
  # vectors
  v <- c(a=1, b=2, c=3 )

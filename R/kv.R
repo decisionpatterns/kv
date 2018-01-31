@@ -10,10 +10,12 @@
 #' No magic here.
 #'
 #' `kv` converts its argument(`x`) into a list-of-lists of key-value pairs
-#' For each element of `x`, a list with elements `k`
-#' and `v` are created.
-#' `k` is the name/key and is given the name of the element of `x`.
-#' `v` is that element.
+#' For **each element of `x`**, it returns a list with elements `k`
+#' and `v`:
+#' `k` is the key(name) for the element. Missing names are made `NULL`
+#' `v` is that value of that element.
+#'
+#' `kv` works for vector and list-like objects including tables.
 #'
 #' For many cases, key-value iteration can be done with `*apply` or
 #' `paste` functions. This is made to be explicit and work on a variery of
@@ -33,23 +35,12 @@
 #'
 #'   mylist = list( a=1, b=2, c=3)
 #'
-#'   for( . in kv(mylist)) {
-#'     cat( "The key is: ", .$k, "\n" )
-#'     cat( "The value is: ", .$v, "\n" )
-#'   }
+#'   for( . in kv(mylist))
+#'     cat( "key is: ", .$k, "| value is:", .$v, "\n" )
 #'
 #'  # Lists
 #'  li <- list(a=1,b=2,c=3)
 #'  kv(li)
-#'
-#'  for( . in kv(li) )
-#'    cat( .$k, ":", .$v, "\n")
-#'
-#'  for( . in kv( list() ))
-#'    cat( .$k, ":", .$v, "\n")
-#'
-#'  for( . in kv(li) )
-#'    cat( .$k, ":", .$v, "\n")
 #'
 #'  # vectors
 #'  v <- c(a=1, b=2, c=3 )
@@ -68,7 +59,14 @@ kv.default <- function(x, ...) {
   kv <- list()
   if( length(x) == 0 ) return(kv)
   for( i in 1:length(x) ) {
-    kv[[i]] = list( k=names(x)[[i]], v=x[[i]] )
+    kv[[i]] = list(
+        k=if( is.null(names(x)) ||
+              is.null( names(x)[[i]]) ||
+              names(x)[[i]] == ""
+            )
+              NULL else names(x)[[i]]
+       , v=x[[i]]
+    )
   }
   names(kv)=names(x)
   return(kv)
