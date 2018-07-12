@@ -1,4 +1,4 @@
-#' Key-value iteration
+#' Key-value-index iteration
 #'
 #' Creates a list with `k` and `v` elements useful for iteration in loops.
 #'
@@ -9,9 +9,10 @@
 #'
 #' No magic here.
 #'
-#' `kv` converts its argument(`x`) into a list-of-lists of key-value pairs
-#' For **each element of `x`**, it returns a list with elements `k`
-#' and `v`:
+#' These functions convert each element of `x` into a list contain a (k)ey,
+#' (v)alue or (i)ndex.
+#'
+#' For **each element of `x`**, a list with elements `k` and `v`:
 #' `k` is the key(name) for the element. Missing names are made `NULL`
 #' `v` is that value of that element.
 #'
@@ -33,7 +34,7 @@
 #'
 #' @examples
 #'
-#'   mylist = list( a=1, b=2, c=3)
+#'   mylist = list( a=1, b=2, c=3 )
 #'
 #'   for( . in kv(mylist))
 #'     cat( "key is: ", .$k, "| value is:", .$v, "\n" )
@@ -55,20 +56,49 @@ kv <- function(x, ...) UseMethod('kv')
 #' @export
 #' @rdname kv
 
-kv.default <- function(x, ...) {
-  kv <- list()
-  if( length(x) == 0 ) return(kv)
-  for( i in 1:length(x) ) {
-    kv[[i]] = list(
-        k=if( is.null(names(x)) ||
-              is.null( names(x)[[i]]) ||
-              names(x)[[i]] == ""
-            )
-              NULL else names(x)[[i]]
-       , v=x[[i]]
-    )
-  }
-  names(kv)=names(x)
-  return(kv)
-}
+kv.default <- function(x, ...) .kvi(x, k=TRUE, v=TRUE, i=FALSE )
+
+
+#' @export
+#' @rdname kv
+kvi <- function(x, ...) UseMethod('kvi')
+#' @export
+#' @rdname kv
+kvi.default <- function(x, ...) .kvi(x, k=TRUE, v=TRUE, i=TRUE )
+
+
+#' @export
+#' @rdname kv
+ki <- function(x, ...) UseMethod('ki')
+#' @export
+#' @rdname kv
+ki.default <- function(x, ...) .kvi(x, k=TRUE, v=FALSE, i=TRUE )
+
+
+#' @export
+#' @rdname kv
+vi <- function(x, ...) UseMethod('vi')
+#' @export
+#' @rdname kv
+vi.default <- function(x, ...) .kvi(x, k=FALSE, v=TRUE, i=TRUE )
+
+# This is hte
+# kv <-
+#   function(x, ...) {
+#   kv <- list()
+#   if( length(x) == 0 ) return(kv)
+#   for( i in 1:length(x) ) {
+#     kv[[i]] = list(
+#         k=if( is.null(names(x)) ||
+#               is.null( names(x)[[i]]) ||
+#               names(x)[[i]] == ""
+#             )
+#               NULL else names(x)[[i]]
+#        , v=x[[i]]
+#        # , i=i
+#     )
+#   }
+#   names(kv)=names(x)
+#   return(kv)
+# }
 

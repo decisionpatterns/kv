@@ -1,4 +1,4 @@
-## kv - key-value iteration in R
+## kv - key-value-index iteration in R
 
 <!--
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kv)](https://cran.r-project.org/package=kv)
@@ -9,9 +9,9 @@
 -->
 
 Other languages (e.g. **Python**) have a shorthand way to reference an object's 
-name or values while iterating. This is not something standard in **R**. This is 
+name or values while iterating. This is not standard in **R**. This is 
 where the **kv** packages steps in. It provides a simple/no magic mechanism 
-for key-value iteration and is best illustrated by the simple example: 
+for key-value-index iteration and is best illustrated by the simple example: 
 
 ``` r
 mylist = list( a=1, b=2, c=3)              # List to iterate over
@@ -21,11 +21,18 @@ for( . in kv(mylist) )
 }  
 ```
 
+
+**NB:** the use of `.` is a convention, any valid R name will work in its place.
+
+
 `kv` works by transforming its argument into a list-of-lists, each element 
 having the appropriate `k` and `v`. See `?kv` for details.
 
-
-**NB:** the use of `.` is a convention, any valid R name will work in its place.
+There are also additional funtions:
+* `kvi()`: uses keys, values and indexes 
+* `kv()` : uses keys and values
+* `ki()` : uses keys and indexes 
+* `vi()` ; uses values and indexes
 
 
 ## Installation 
@@ -43,9 +50,12 @@ Development Version:
 
 ## Functions
 
-The only function in this package is `kv` which turns its argument into a list 
-of key-value pairs.  The use of `.` is a simple convention that allows use to 
-use the concise syntak `.$k` and `.$v`.
+The function of this packages are permutation of letters 'k', 'v' and 'i'. Each 
+function turns its argument into a list-of-lists with the corresponding (k)ey, 
+(v)alue and/or (i) set.  
+
+The use of `.` is a simple convention that allows use to use the concise 
+syntak `.$k`, `.$v`  or `.$i` to access the element. 
  
 
 ## References

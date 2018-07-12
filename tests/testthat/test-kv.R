@@ -9,8 +9,7 @@ test_that("kv", {
   ans <-
     structure(
       list(
-        a = structure(list(k = "a", v = 1), .Names = c("k",
-                                                       "v")),
+        a = structure(list(k = "a", v = 1), .Names = c("k", "v")),
         b = structure(list(k = "b", v = 2), .Names = c("k", "v")),
         c = structure(list(k = "c", v = 3), .Names = c("k", "v"))
       ),
@@ -32,10 +31,9 @@ test_that("kv", {
   ans <-
     structure(
       list(
-        a = structure(list(k = "a", v = 1), .Names = c("k",
-                                                       "v")),
-        b = structure(list(k = "b", v = 2), .Names = c("k", "v")),
-        c = structure(list(k = "c", v = 3), .Names = c("k", "v"))
+        a = structure( list(k = "a", v = 1), .Names = c("k", "v") ),
+        b = structure( list(k = "b", v = 2), .Names = c("k", "v") ),
+        c = structure( list(k = "c", v = 3), .Names = c("k", "v") )
       ),
       .Names = c("a","b", "c")
     )
@@ -55,10 +53,9 @@ test_that("kv", {
   ans <-
     structure(
       list(
-        a = structure(list(k = "a", v = 1), .Names = c("k",
-                                                       "v")),
-        b = structure(list(k = "b", v = 2), .Names = c("k", "v")),
-        c = structure(list(k = "c", v = 3), .Names = c("k", "v"))
+        a = structure( list(k = "a", v = 1), .Names = c("k","v") ),
+        b = structure( list(k = "b", v = 2), .Names = c("k", "v") ),
+        c = structure( list(k = "c", v = 3), .Names = c("k", "v") )
       ),
       .Names = c("a","b", "c")
     )
