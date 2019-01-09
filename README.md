@@ -8,12 +8,18 @@
 [![Coverage Status](https://img.shields.io/codecov/c/github/decisionpatterns/kv/master.svg)](https://codecov.io/github/decisionpatterns/kv?branch=master)
 -->
 
-Other languages (e.g. **Python**) have a shorthand way to reference an object's 
-name or values while iterating. This is not standard in **R**. This is 
-where the **kv** packages steps in. It provides a simple/no magic mechanism 
-for key-value-index iteration and is best illustrated by the simple example: 
+Other languages (e.g. **Python**) have a native,shorthand way to reference an 
+object's key or values while iterating. **R** does not. This is where **kv** 
+steps in. 
 
-``` r
+
+
+## Key/Value/Index Iteration 
+
+*kv* provides a simple/no magic mechanism for key-value-index iteration. 
+It is best illustrated by the simple example: 
+
+```r
 mylist = list( a=1, b=2, c=3)              # List to iterate over
 
 for( . in kv(mylist) )
@@ -21,12 +27,10 @@ for( . in kv(mylist) )
 }  
 ```
 
-
-**NB:** the use of `.` is a convention, any valid R name will work in its place.
-
-
 `kv` works by transforming its argument into a list-of-lists, each element 
 having the appropriate `k` and `v`. See `?kv` for details.
+
+**NB:** the use of `.` is a convention, any valid R name will work in its place.
 
 There are also additional funtions:
 * `kvi()`: uses keys, values and indexes 
@@ -34,6 +38,15 @@ There are also additional funtions:
 * `ki()` : uses keys and indexes 
 * `vi()` ; uses values and indexes
 
+
+## Table-row iterations
+
+**kv** also allows for iteration over rows in a table, for example:
+
+```r
+for( . in each_row(iris) )
+  cat( .$Species, ": ", .$Sepal.Lenght )
+```
 
 ## Installation 
 
